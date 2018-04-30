@@ -1,11 +1,14 @@
 import React from 'react';
+import { Constants, Audio } from 'expo';
 import { Image, View, StyleSheet, Text, Button,  Alert, AppRegistry, Platform, Linking,
    TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback} from 'react-native';
 
 export default class App extends React.Component {
 
   render() {
+
     return (
+
       <View style={styles.container}>
       <Text style={{fontSize: 40, color: 'white', textAlign: 'center'}}>Happy one year Anniversary!</Text>
       <Image
@@ -18,21 +21,35 @@ export default class App extends React.Component {
         <Text style={{fontSize: 30, color: 'white', textAlign: 'center'}}>Time Stood Still</Text>
         <Image
           source={require('./P_20170615_142821_BF.jpg')}
-          style={{width: 320, height:180}}
+          style={{width: 320, height:230}}
         />
         <Button
         style={{fontSize: 20, color: 'white'}}
         styleDisabled={{color: 'red'}}
-        onPress={ ()=>{ Linking.openURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')}}
-        title="Let the Magic Begin"
->
-  Press Me
-</Button>
+        onPress={async () => {
+            const source = {
+              uri: "http://blogs.ubc.ca/anselhartanto/files/2018/04/musicEdSheeran.mp3"
+            };
 
+            try {
+              await Audio.setIsEnabledAsync(true);
+              const sound = new Audio.Sound();
+              await sound.loadAsync(source);
+              await sound.playAsync();
+            } catch(error) {
+              console.error(error);
+            }
+          }}
+        title="Let the Magic Begin"
+        >
+        Press Me
+        </Button>
       </View>
     );
   }
 }
+
+
 
 
 const styles2 = StyleSheet.create({
@@ -46,7 +63,7 @@ const styles2 = StyleSheet.create({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ff69b4',
+    backgroundColor: '#FF7F50',
     borderTopWidth: 10,
     borderLeftWidth: 10,
     borderRightWidth: 10,
