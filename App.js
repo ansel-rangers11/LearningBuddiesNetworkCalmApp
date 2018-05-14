@@ -1,6 +1,6 @@
 import React from 'react';
 import { Constants, Audio } from 'expo';
-import { Image, View, StyleSheet, Text, Button,  Alert, AppRegistry, Platform, Linking,
+import { Image, View, StyleSheet, Text, Button, Vibration, Alert, AppRegistry, Platform, Linking,
    TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback} from 'react-native';
 
 export default class App extends React.Component {
@@ -8,20 +8,33 @@ export default class App extends React.Component {
   render() {
 
     return (
-
       <View style={styles.container}>
-      <Text style={{fontSize: 40, color: 'white', textAlign: 'center'}}>Happy one year Anniversary!</Text>
       <Image
-        source={require('./P_20170526_151336_BF.jpg')}
-        style={{width: 320, height:180}}
+        source={require('./LBN_Logo.png')}
+        style={{width: 220, height:120}}
       />
-        <Text>Once upon a time there was a hopeful Indonesian kid</Text>
-        <Text>Who just went to university not knowing anything</Text>
-        <Text style={{fontSize: 20, color: 'white', textAlign: 'center'}}>Today we join for one year but it feels</Text>
-        <Text style={{fontSize: 30, color: 'white', textAlign: 'center'}}>Time Stood Still</Text>
+      <Text style={{fontSize: 27, color: '#044c29', textAlign: 'center'}}>Learning Buddies Network Calming Application</Text>
+      <Text style={{fontSize: 20, color: 'white', textAlign: 'center'}}>Activate Cellphone Vibrations</Text>
+      <Image
+        source={require('./476_-_Vibration_mode-512.png')}
+        style={{width: 220, height:120}}
+      />
+       <Button
+       style={{fontSize: 20, color: 'white'}}
+       styleDisabled={{color: 'red'}}
+       onPress={async () => {
+          Vibration.vibrate(5000)
+        }
+      }
+       title="Vibrate"
+       >
+       Press Me
+       </Button>
+
+        <Text style={{fontSize: 20, color: 'white', textAlign: 'center'}}>Activate Song Melody</Text>
         <Image
-          source={require('./P_20170615_142821_BF.jpg')}
-          style={{width: 320, height:230}}
+          source={require('./music_notes_stock_by_bassgeisha-d3h9mpv.jpg')}
+          style={{width: 220, height:120}}
         />
         <Button
         style={{fontSize: 20, color: 'white'}}
@@ -40,10 +53,12 @@ export default class App extends React.Component {
               console.error(error);
             }
           }}
-        title="Let the Magic Begin"
+        title="Play Music"
         >
         Press Me
         </Button>
+
+
       </View>
     );
   }
@@ -63,7 +78,7 @@ const styles2 = StyleSheet.create({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FF7F50',
+    backgroundColor: '#09c168',
     borderTopWidth: 10,
     borderLeftWidth: 10,
     borderRightWidth: 10,
